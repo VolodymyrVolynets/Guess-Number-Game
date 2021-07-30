@@ -15,37 +15,53 @@ enum GuessNumberOut {
 
 struct GuessNumberModel {
     private let range: Range<Int>
-    private let computerNumber: Int
-    private let playerNumber: Int
-    private var isPlayerTurn = true
-    private var computerScore: Int = 0
-    private var playerScore: Int = 0
+    private let playerOneNumber: Int
+    private let playerTwoNumber: Int
+    private var isPlayerOneTurn = true
+    private var playerOneFails: Int = 0
+    private var playerTwoFails: Int = 0
     
-    init(range: Range<Int>, playerNumber number: Int) {
+    init(range: Range<Int>, playerOneNumber: Int, playerTwoNumber: Int) {
         self.range = range
-        computerNumber = Int.random(in: range)
-        playerNumber = number
+        self.playerOneNumber = playerOneNumber
+        self.playerTwoNumber = playerTwoNumber
     }
     
-    func checkEnteredNumber(enteredNumber: Int) -> GuessNumberOut {
-        let numberToCompare = isPlayerTurn ? playerNumber : computerNumber
+    mutating func checkEnteredNumber(enteredNumber: Int) -> GuessNumberOut {
+        let numberToCompare = isPlayerOneTurn ? playerTwoNumber : playerOneNumber
         let guessNumberOut: GuessNumberOut
         
         if numberToCompare == enteredNumber {
             guessNumberOut = .equal
-        } else if numberToCompare > enteredNumber {
-            guessNumberOut = .greater
+            if isPlayerOneTurn {
+                changeTurn()
+            } else {
+                
+            }
+            
         } else {
-            guessNumberOut = .less
+            
+            addFailScore()
+            
+            if numberToCompare > enteredNumber {
+                guessNumberOut = .greater
+            } else {
+                guessNumberOut = .less
+            }
         }
         
         return guessNumberOut
     }
     
-    mutating func changeTurn() {
-        isPlayerTurn.toggle()
+    private mutating func changeTurn() {
+        isPlayerOneTurn = false
     }
     
-    
-    
+    private mutating func addFailScore() {
+        if isPlayerOneTurn {
+            playerTwoFails += 1
+        } else {
+            playerOneFails += 1
+        }
+    }
 }
