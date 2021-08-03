@@ -13,6 +13,12 @@
 		8071F79326B3D57B00478F0B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8071F79226B3D57B00478F0B /* Preview Assets.xcassets */; };
 		8071F79C26B3D5F900478F0B /* GuessNumberModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8071F79B26B3D5F900478F0B /* GuessNumberModel.swift */; };
 		8071F79E26B3D62000478F0B /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8071F79D26B3D62000478F0B /* ViewModel.swift */; };
+		8071F7A026B3EE3200478F0B /* ComputerPlayerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8071F79F26B3EE3200478F0B /* ComputerPlayerModel.swift */; };
+		8071F7A226B51DE800478F0B /* GuessNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8071F7A126B51DE800478F0B /* GuessNumberView.swift */; };
+		8071F7A426B56D2600478F0B /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8071F7A326B56D2600478F0B /* StartView.swift */; };
+		80955B1E26B5879900608454 /* PlayerEnterNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80955B1D26B5879900608454 /* PlayerEnterNumberView.swift */; };
+		80955B2026B5886D00608454 /* PlayerGuessNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80955B1F26B5886D00608454 /* PlayerGuessNumberView.swift */; };
+		80955B2326B6943A00608454 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80955B2226B6943A00608454 /* ViewExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +30,12 @@
 		8071F79426B3D57B00478F0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8071F79B26B3D5F900478F0B /* GuessNumberModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuessNumberModel.swift; sourceTree = "<group>"; };
 		8071F79D26B3D62000478F0B /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		8071F79F26B3EE3200478F0B /* ComputerPlayerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputerPlayerModel.swift; sourceTree = "<group>"; };
+		8071F7A126B51DE800478F0B /* GuessNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuessNumberView.swift; sourceTree = "<group>"; };
+		8071F7A326B56D2600478F0B /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
+		80955B1D26B5879900608454 /* PlayerEnterNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerEnterNumberView.swift; sourceTree = "<group>"; };
+		80955B1F26B5886D00608454 /* PlayerGuessNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerGuessNumberView.swift; sourceTree = "<group>"; };
+		80955B2226B6943A00608454 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +52,8 @@
 		8071F77F26B3D57A00478F0B = {
 			isa = PBXGroup;
 			children = (
+				80955B1F26B5886D00608454 /* PlayerGuessNumberView.swift */,
+				80955B1D26B5879900608454 /* PlayerEnterNumberView.swift */,
 				8071F78A26B3D57A00478F0B /* Guess Number Game */,
 				8071F78926B3D57A00478F0B /* Products */,
 			);
@@ -56,10 +70,12 @@
 		8071F78A26B3D57A00478F0B /* Guess Number Game */ = {
 			isa = PBXGroup;
 			children = (
+				8071F79A26B3D5DE00478F0B /* Views */,
+				80955B2126B6942900608454 /* Extensions */,
 				8071F78B26B3D57A00478F0B /* Guess_Number_GameApp.swift */,
 				8071F79B26B3D5F900478F0B /* GuessNumberModel.swift */,
+				8071F79F26B3EE3200478F0B /* ComputerPlayerModel.swift */,
 				8071F79D26B3D62000478F0B /* ViewModel.swift */,
-				8071F79A26B3D5DE00478F0B /* Views */,
 				8071F78F26B3D57B00478F0B /* Assets.xcassets */,
 				8071F79426B3D57B00478F0B /* Info.plist */,
 				8071F79126B3D57B00478F0B /* Preview Content */,
@@ -79,8 +95,18 @@
 			isa = PBXGroup;
 			children = (
 				8071F78D26B3D57A00478F0B /* ContentView.swift */,
+				8071F7A326B56D2600478F0B /* StartView.swift */,
+				8071F7A126B51DE800478F0B /* GuessNumberView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		80955B2126B6942900608454 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				80955B2226B6943A00608454 /* ViewExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,10 +178,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8071F7A026B3EE3200478F0B /* ComputerPlayerModel.swift in Sources */,
 				8071F79C26B3D5F900478F0B /* GuessNumberModel.swift in Sources */,
+				80955B2026B5886D00608454 /* PlayerGuessNumberView.swift in Sources */,
 				8071F79E26B3D62000478F0B /* ViewModel.swift in Sources */,
+				80955B2326B6943A00608454 /* ViewExtension.swift in Sources */,
 				8071F78E26B3D57A00478F0B /* ContentView.swift in Sources */,
 				8071F78C26B3D57A00478F0B /* Guess_Number_GameApp.swift in Sources */,
+				80955B1E26B5879900608454 /* PlayerEnterNumberView.swift in Sources */,
+				8071F7A226B51DE800478F0B /* GuessNumberView.swift in Sources */,
+				8071F7A426B56D2600478F0B /* StartView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

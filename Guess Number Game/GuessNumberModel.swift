@@ -7,19 +7,14 @@
 
 import Foundation
 
-enum GuessNumberOut {
-    case less
-    case greater
-    case equal
-}
 
 struct GuessNumberModel {
     private let range: Range<Int>
     private let playerOneNumber: Int
     private let playerTwoNumber: Int
-    private var isPlayerOneTurn = true
-    private var playerOneFails: Int = 0
-    private var playerTwoFails: Int = 0
+    private(set) var isPlayerOneTurn = true
+    private(set) var playerOneFails: Int = 0
+    private(set) var playerTwoFails: Int = 0
     
     init(range: Range<Int>, playerOneNumber: Int, playerTwoNumber: Int) {
         self.range = range
@@ -36,7 +31,7 @@ struct GuessNumberModel {
             if isPlayerOneTurn {
                 changeTurn()
             } else {
-                
+//                isEndGame = true
             }
             
         } else {
@@ -59,9 +54,16 @@ struct GuessNumberModel {
     
     private mutating func addFailScore() {
         if isPlayerOneTurn {
-            playerTwoFails += 1
-        } else {
             playerOneFails += 1
+        } else {
+            playerTwoFails += 1
         }
     }
+    
+    enum GuessNumberOut {
+        case less
+        case greater
+        case equal
+    }
+    
 }
