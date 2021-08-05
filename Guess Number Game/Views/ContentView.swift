@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     
     @State var currentView: CurrentView = .startView
-    @State var viewModel: ViewModel?
+    @ObservedObject var viewModel = ViewModel()
 
     var body: some View {
 
@@ -18,9 +18,9 @@ struct ContentView: View {
         case .startView:
             StartView(currentView: $currentView)
         case .playerEnterNumberView:
-            PlayerEnterNumberView(currentView: $currentView, viewModel: $viewModel)
+            PlayerEnterNumberView(currentView: $currentView, viewModel: viewModel)
         case .playerGuessNumberView:
-            PlayerGuessNumberView(currentView: $currentView, viewModel: $viewModel)
+            PlayerGuessNumberView(currentView: $currentView, viewModel: viewModel)
         case .result:
             Text("Win")
         }
@@ -36,6 +36,6 @@ enum CurrentView {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(viewModel: nil)
+        ContentView()
     }
 }

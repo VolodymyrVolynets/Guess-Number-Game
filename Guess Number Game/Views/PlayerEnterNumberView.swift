@@ -10,7 +10,7 @@ import SwiftUI
 struct PlayerEnterNumberView: View {
     
     @Binding var currentView: CurrentView
-    @Binding var viewModel: ViewModel?
+    @ObservedObject var viewModel: ViewModel
     @State var enteredNumber: Int = 0
     
     var body: some View {
@@ -19,7 +19,7 @@ struct PlayerEnterNumberView: View {
             TextField("Number", value: $enteredNumber, formatter: NumberFormatter())
             
             Button(action: {
-                viewModel = ViewModel(playerOneEnteredNumber: enteredNumber)
+                viewModel.startNewGame(playerOneEnteredNumber: enteredNumber)
                 currentView = .playerGuessNumberView
             }, label: {
                 Text("Next")
@@ -30,6 +30,6 @@ struct PlayerEnterNumberView: View {
 
 struct PlayerEnterNumberView_Previews: PreviewProvider {
     static var previews: some View {
-        PlayerEnterNumberView(currentView: .constant(.playerEnterNumberView), viewModel: .constant(ViewModel(playerOneEnteredNumber: 10)))
+        PlayerEnterNumberView(currentView: .constant(.playerEnterNumberView), viewModel: ViewModel())
     }
 }

@@ -24,9 +24,11 @@ struct ComputerPlayerModel {
         
         let result = closure(randomNumber)
         
+        print("\(currentRange.min()) ... \(currentRange.max())" )
+        
             if result == .greater {
             guard let safeCurrentRangeMax = currentRange.max() else { return }
-            currentRange = randomNumber..<safeCurrentRangeMax
+            currentRange = randomNumber..<safeCurrentRangeMax + 1
         } else {
             guard let safeCurrentRangeMin = currentRange.min() else { return }
             currentRange = safeCurrentRangeMin..<randomNumber

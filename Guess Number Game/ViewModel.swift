@@ -8,28 +8,29 @@
 import Foundation
 
 class ViewModel: ObservableObject {
-    @Published var guessNumberModel: GuessNumberModel
-    let computerPlayerModel: ComputerPlayerModel
+    @Published var guessNumberModel: GuessNumberModel?
+    var computerPlayerModel: ComputerPlayerModel
     let range: Range<Int> = -100..<100
-    var isPlayerOneTurn: Bool {
-        guessNumberModel.isPlayerOneTurn
+    var isGameStarted: Bool {
+        return guessNumberModel != nil ? true : false
     }
-    var playerOneFails: Int {
-        guessNumberModel.playerOneFails
-    }
-    var playerTwoFails: Int {
-        guessNumberModel.playerTwoFails
+    var test: Int? {
+        guessNumberModel?.playerOneFails
     }
     
-    init(playerOneEnteredNumber: Int) {
+    init() {
         self.computerPlayerModel = ComputerPlayerModel(range: range)
+    }
+    
+    func startNewGame(playerOneEnteredNumber: Int) {
         let playerOneEnteredNumber = playerOneEnteredNumber
         let playerTwoEnteredNumber = computerPlayerModel.createNumber()
+        print(playerTwoEnteredNumber)
         self.guessNumberModel = GuessNumberModel(range: range, playerOneNumber: playerOneEnteredNumber, playerTwoNumber: playerTwoEnteredNumber)
     }
     
-    func makeChoice(number: Int) -> GuessNumberModel.GuessNumberOut{
-        guessNumberModel.checkEnteredNumber(enteredNumber: number)
+    func makeChoice(number: Int) -> GuessNumberModel.GuessNumberOut?{
+        return guessNumberModel?.checkEnteredNumber(enteredNumber: number)
     }
     
     
