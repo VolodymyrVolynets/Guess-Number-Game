@@ -9,27 +9,40 @@ import SwiftUI
 
 struct PlayerEnterNumberView: View {
     
-    @Binding var currentView: CurrentView
     @ObservedObject var viewModel: ViewModel
-    @State var enteredNumber: Int = 0
+    @State var textField = ""
+    var range: Range<Int> {
+        viewModel.range
+    }
+    var enteredNumber: Int {
+        Int(textField) ?? 0
+    }
     
     var body: some View {
         VStack {
             Text("PlayerEnterNumberView")
-            TextField("Number", value: $enteredNumber, formatter: NumberFormatter())
+            TextField("Number", text: $textField.didSet({ (newValue: String, oldValue: String) in
+                if !(newValue.isEmptyOrNumeric && range.contains(Int(newValue) ?? 0)) {
+                    textField = oldValue
+                }
+            }))
+            .keyboardType(.numberPad)
             
             Button(action: {
+                guard !textField.isEmpty else { return }
                 viewModel.startNewGame(playerOneEnteredNumber: enteredNumber)
-                currentView = .playerGuessNumberView
+                viewModel.currentView = .playerGuessNumberView
             }, label: {
                 Text("Next")
             })
+        }.onTapGesture {
+            endEditing()
         }
     }
 }
 
 struct PlayerEnterNumberView_Previews: PreviewProvider {
     static var previews: some View {
-        PlayerEnterNumberView(currentView: .constant(.playerEnterNumberView), viewModel: ViewModel())
+        PlayerEnterNumberView(viewModel: ViewModel(range: -100..<100))
     }
 }

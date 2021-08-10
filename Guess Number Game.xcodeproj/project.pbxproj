@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		802E7B8426BD53A100BBAFDF /* BindingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802E7B8326BD53A100BBAFDF /* BindingExtension.swift */; };
 		8071F78C26B3D57A00478F0B /* Guess_Number_GameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8071F78B26B3D57A00478F0B /* Guess_Number_GameApp.swift */; };
 		8071F78E26B3D57A00478F0B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8071F78D26B3D57A00478F0B /* ContentView.swift */; };
 		8071F79026B3D57B00478F0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8071F78F26B3D57B00478F0B /* Assets.xcassets */; };
@@ -19,9 +20,11 @@
 		80955B2026B5886D00608454 /* PlayerGuessNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80955B1F26B5886D00608454 /* PlayerGuessNumberView.swift */; };
 		80955B2326B6943A00608454 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80955B2226B6943A00608454 /* ViewExtension.swift */; };
 		80955B2526B90C2500608454 /* GameError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80955B2426B90C2500608454 /* GameError.swift */; };
+		80E0AF5726BC32DD006A166C /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E0AF5626BC32DD006A166C /* StringExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		802E7B8326BD53A100BBAFDF /* BindingExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingExtension.swift; sourceTree = "<group>"; };
 		8071F78826B3D57A00478F0B /* Guess Number Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Guess Number Game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8071F78B26B3D57A00478F0B /* Guess_Number_GameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guess_Number_GameApp.swift; sourceTree = "<group>"; };
 		8071F78D26B3D57A00478F0B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -36,6 +39,7 @@
 		80955B1F26B5886D00608454 /* PlayerGuessNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerGuessNumberView.swift; sourceTree = "<group>"; };
 		80955B2226B6943A00608454 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		80955B2426B90C2500608454 /* GameError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameError.swift; sourceTree = "<group>"; };
+		80E0AF5626BC32DD006A166C /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,8 +99,8 @@
 			children = (
 				8071F78D26B3D57A00478F0B /* ContentView.swift */,
 				8071F7A326B56D2600478F0B /* StartView.swift */,
-				80955B1F26B5886D00608454 /* PlayerGuessNumberView.swift */,
 				80955B1D26B5879900608454 /* PlayerEnterNumberView.swift */,
+				80955B1F26B5886D00608454 /* PlayerGuessNumberView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -105,6 +109,8 @@
 			isa = PBXGroup;
 			children = (
 				80955B2226B6943A00608454 /* ViewExtension.swift */,
+				80E0AF5626BC32DD006A166C /* StringExtension.swift */,
+				802E7B8326BD53A100BBAFDF /* BindingExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -187,6 +193,8 @@
 				8071F78E26B3D57A00478F0B /* ContentView.swift in Sources */,
 				8071F78C26B3D57A00478F0B /* Guess_Number_GameApp.swift in Sources */,
 				80955B1E26B5879900608454 /* PlayerEnterNumberView.swift in Sources */,
+				802E7B8426BD53A100BBAFDF /* BindingExtension.swift in Sources */,
+				80E0AF5726BC32DD006A166C /* StringExtension.swift in Sources */,
 				8071F7A426B56D2600478F0B /* StartView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

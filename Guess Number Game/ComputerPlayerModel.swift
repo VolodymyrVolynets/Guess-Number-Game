@@ -9,29 +9,31 @@ import Foundation
 
 struct ComputerPlayerModel {
     private let range: Range<Int>
-    private var currentRange: Range<Int>
+    private var guessNumberRange: Range<Int>
     init(range: Range<Int>) {
         self.range = range
-        self.currentRange = range
+        self.guessNumberRange = range
     }
     
     func createNumber() -> Int {
-        range.randomElement() ?? 0
+        let randomNum = range.randomElement() ?? 0
+        
+        print("computer variable: \(randomNum)")
+        
+        return randomNum
     }
     
     mutating func guessNumber(closure: (Int) -> GuessNumberModel.GuessNumberOut) {
-        guard let randomNumber = currentRange.randomElement() else { return }
+        guard let randomNumber = guessNumberRange.randomElement() else { return }
         
         let result = closure(randomNumber)
         
-        print("\(currentRange.min()) ... \(currentRange.max())" )
-        
             if result == .greater {
-            guard let safeCurrentRangeMax = currentRange.max() else { return }
-            currentRange = randomNumber..<safeCurrentRangeMax + 1
+            guard let safeCurrentRangeMax = guessNumberRange.max() else { return }
+            guessNumberRange = randomNumber + 1..<safeCurrentRangeMax + 1
         } else {
-            guard let safeCurrentRangeMin = currentRange.min() else { return }
-            currentRange = safeCurrentRangeMin..<randomNumber
+            guard let safeCurrentRangeMin = guessNumberRange.min() else { return }
+            guessNumberRange = safeCurrentRangeMin..<randomNumber
         }
     }
 }

@@ -9,23 +9,35 @@ import SwiftUI
 
 struct StartView: View {
     
-    @Binding var currentView: CurrentView
-    
+    @ObservedObject var viewModel: ViewModel
+    @State var scaleEffect: CGFloat = 1
+
     var body: some View {
-        VStack {
-            Text("Start New Game")
-            
-            Button(action: {
-                currentView = .playerEnterNumberView
-            }, label: {
-                Text("Start")
-            })
+        ZStack {
+            Color.white
+                .edgesIgnoringSafeArea(.all)
+            VStack {
+                Text("Press To Start New Game")
+                    .font(.system(size: 40, weight: .black, design: .default))
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.1)
+                    .padding(50)
+                    .scaleEffect(scaleEffect)
+            }
+        }
+        .onAppear {
+            withAnimation(Animation.easeInOut(duration: 1).repeatForever(autoreverses: true)) {
+                scaleEffect = 0.8
+            }
+        }
+        .onTapGesture {
+            viewModel.currentView = .playerEnterNumberView
         }
     }
 }
 
 struct StartView_Previews: PreviewProvider {
     static var previews: some View {
-        StartView(currentView: .constant(.startView))
+        StartView(viewModel: ViewModel(range: -100..<100))
     }
 }

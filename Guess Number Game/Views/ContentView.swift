@@ -8,30 +8,26 @@
 import SwiftUI
 
 struct ContentView: View {
-    
-    @State var currentView: CurrentView = .startView
-    @ObservedObject var viewModel = ViewModel()
+
+    @ObservedObject var viewModel = ViewModel(range: -100..<100)
 
     var body: some View {
 
-        switch currentView {
+        switch viewModel.currentView {
         case .startView:
-            StartView(currentView: $currentView)
+            StartView(viewModel: viewModel)
+                .transition(AnyTransition.asymmetric(insertion: .opacity, removal: .move(edge: .top)))
         case .playerEnterNumberView:
-            PlayerEnterNumberView(currentView: $currentView, viewModel: viewModel)
+            PlayerEnterNumberView(viewModel: viewModel)
         case .playerGuessNumberView:
-            PlayerGuessNumberView(currentView: $currentView, viewModel: viewModel)
+            PlayerGuessNumberView(viewModel: viewModel)
         case .result:
-            Text("Win")
+            VStack {
+                Text("Player one fails: \(viewModel.playerOneFails)")
+                Text("Player two fails: \(viewModel.playerTwoFails)")
+            }
         }
     }
-}
-
-enum CurrentView {
-    case startView
-    case playerEnterNumberView
-    case playerGuessNumberView
-    case result
 }
 
 struct ContentView_Previews: PreviewProvider {

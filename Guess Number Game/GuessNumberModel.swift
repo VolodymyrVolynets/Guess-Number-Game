@@ -35,14 +35,10 @@ struct GuessNumberModel {
             }
             
         } else {
-            
             addFailScore()
             
-            if numberToCompare > enteredNumber {
-                guessNumberOut = .greater
-            } else {
-                guessNumberOut = .less
-            }
+            
+            guessNumberOut = numberToCompare > enteredNumber ? .greater : .less
         }
         
         return guessNumberOut
@@ -65,5 +61,17 @@ struct GuessNumberModel {
         case greater
         case equal
     }
-    
+}
+
+extension GuessNumberModel.GuessNumberOut {
+    var discription: String {
+        switch self {
+        case .equal:
+            return "equal"
+        case .greater:
+            return "greater"
+        case .less:
+            return "less"
+        }
+    }
 }

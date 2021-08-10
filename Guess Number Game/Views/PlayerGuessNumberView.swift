@@ -9,11 +9,20 @@ import SwiftUI
 
 struct PlayerGuessNumberView: View {
     
-    @Binding var currentView: CurrentView
     @ObservedObject var viewModel: ViewModel
-    @State var textfield = ""
-    @State var previousInput = ""
-
+    @State var textField = ""
+    
+    @State var result: GuessNumberModel.GuessNumberOut?
+    
+    var range: Range<Int> {
+        viewModel.range
+    }
+    
+    var enteredNumber: Int {
+        Int(textField) ?? 0
+    }
+    
+    
     var fails: Int {
         if let safeModel = viewModel.guessNumberModel {
             return safeModel.isPlayerOneTurn ? safeModel.playerOneFails : safeModel.playerTwoFails
@@ -25,47 +34,37 @@ struct PlayerGuessNumberView: View {
     var body: some View {
         VStack {
             Text("PlayerGuessNumberView")
-            Text("\(viewModel.test!) fails")
-            TextField("", text: $textfield)
-                .keyboardType(.decimalPad)
+            Text("\(viewModel.playerOneFails)")
+            Text("\(viewModel.playerTwoFails)")
+            Text(result != nil ? "Hidden number is: \(result!.discription)" : "")
+            TextField("Number", text: $textField.didSet({ (newValue: String, oldValue: String) in
+                if !(newValue.isEmptyOrNumeric && range.contains(Int(newValue) ?? 0)) {
+                    textField = oldValue
+                }
+            }))
+            .multilineTextAlignment(.center)
+            .keyboardType(.numberPad)
             
-            Text(previousInput)
+            
             
             Button(action: {
-                previousInput = textfield
-                if viewModel.makeChoice(number: Int(textfield) ?? 0) == .equal {
-                    currentView = .result
+                if viewModel.isPlayerOneTurn {
+                    result = viewModel.makeChoice(number: enteredNumber)
+                } else {
+                    viewModel.startComputerTurn()
                 }
-//                viewModel.makeChoice(number: Int(textfield) ?? 0)
-                print(textfield)
             }, label: {
-                Text("Guess")
+                Text(viewModel.isPlayerOneTurn ? "Guess" : "Start Computer")
             })
         }
-        .onAppear {
-            guard var safeModel = viewModel.guessNumberModel else {return}
-            if safeModel.isPlayerOneTurn {
-//                    out = viewModel.computerPlayerModel.guessNumber { number in
-//                        viewModel.makeChoice(number: number)
-                let a = Timer.scheduledTimer(withTimeInterval: 1, repeats: true ) { Timer in
-
-                        viewModel.computerPlayerModel.guessNumber { number in
-                            previousInput = "\(number)"
-                            print("\(number)")
-                            var out = safeModel.checkEnteredNumber(enteredNumber: number)
-                            if out == .equal {
-                                currentView = .result
-                            }
-                            return out
-                    }
-                    }
-            }
+        .onTapGesture {
+            endEditing()
         }
     }
 }
 
 struct PlayerGuessNumberView_Previews: PreviewProvider {
     static var previews: some View {
-        PlayerGuessNumberView(currentView: .constant(.playerEnterNumberView), viewModel: ViewModel())
+        PlayerGuessNumberView(viewModel: ViewModel(range: -100..<100))
     }
 }
