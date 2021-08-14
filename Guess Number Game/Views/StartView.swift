@@ -18,10 +18,10 @@ struct StartView: View {
                 .edgesIgnoringSafeArea(.all)
             VStack {
                 Text("Press To Start New Game")
-                    .font(.system(size: 40, weight: .black, design: .default))
+                    .font(.system(size: 40, weight: .bold, design: .default))
                     .lineLimit(1)
                     .minimumScaleFactor(0.1)
-                    .padding(50)
+                    .padding(40)
                     .scaleEffect(scaleEffect)
             }
         }
@@ -31,13 +31,15 @@ struct StartView: View {
             }
         }
         .onTapGesture {
-            viewModel.currentView = .playerEnterNumberView
+            withAnimation() {
+                viewModel.currentView = .playerEnterNumberView
+            }
         }
     }
 }
 
 struct StartView_Previews: PreviewProvider {
     static var previews: some View {
-        StartView(viewModel: ViewModel(range: -100..<100))
+        StartView(viewModel: ViewModel(range: -100...100))
     }
 }

@@ -8,21 +8,21 @@
 import Foundation
 
 
-struct GuessNumberModel {
-    private let range: Range<Int>
-    private let playerOneNumber: Int
-    private let playerTwoNumber: Int
+struct GuessNumberModel<Element> where Element: BinaryInteger {
+    private let range: ClosedRange<Element>
+    private let playerOneNumber: Element
+    private let playerTwoNumber: Element
     private(set) var isPlayerOneTurn = true
     private(set) var playerOneFails: Int = 0
     private(set) var playerTwoFails: Int = 0
     
-    init(range: Range<Int>, playerOneNumber: Int, playerTwoNumber: Int) {
+    init(range: ClosedRange<Element>, playerOneNumber: Element, playerTwoNumber: Element) {
         self.range = range
         self.playerOneNumber = playerOneNumber
         self.playerTwoNumber = playerTwoNumber
     }
     
-    mutating func checkEnteredNumber(enteredNumber: Int) -> GuessNumberOut {
+    mutating func checkEnteredNumber(enteredNumber: Element) -> GuessNumberOut {
         let numberToCompare = isPlayerOneTurn ? playerTwoNumber : playerOneNumber
         let guessNumberOut: GuessNumberOut
         
@@ -55,15 +55,14 @@ struct GuessNumberModel {
             playerTwoFails += 1
         }
     }
-    
-    enum GuessNumberOut {
-        case less
-        case greater
-        case equal
-    }
+}
+enum GuessNumberOut {
+    case less
+    case greater
+    case equal
 }
 
-extension GuessNumberModel.GuessNumberOut {
+extension GuessNumberOut {
     var discription: String {
         switch self {
         case .equal:

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
 
-    @ObservedObject var viewModel = ViewModel(range: -100..<100)
+    @ObservedObject var viewModel = ViewModel(range: -100...100)
 
     var body: some View {
 

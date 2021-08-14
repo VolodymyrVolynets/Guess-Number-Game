@@ -8,17 +8,15 @@
 import SwiftUI
 
 class ViewModel: ObservableObject {
-    @Published var guessNumberModel: GuessNumberModel?
+    typealias SignedIntegerElement = Int
+    @Published var guessNumberModel: GuessNumberModel<SignedIntegerElement>?
     @Published var currentView: CurrentView = .startView {
         didSet {
             previousInput = ""
         }
-        get {
-            currentView
-        }
     }
-    var computerPlayerModel: ComputerPlayerModel
-    let range: Range<Int>
+    var computerPlayerModel: ComputerPlayerModel<SignedIntegerElement>
+    let range: ClosedRange<Int>
     var previousInput = ""
     var isGameStarted: Bool {
         return guessNumberModel != nil ? true : false
@@ -33,7 +31,7 @@ class ViewModel: ObservableObject {
         guessNumberModel?.playerTwoFails ?? 0
     }
     
-    init(range: Range<Int>) {
+    init(range: ClosedRange<Int>) {
         self.range = range
         self.computerPlayerModel = ComputerPlayerModel(range: range)
     }
@@ -45,7 +43,7 @@ class ViewModel: ObservableObject {
         self.guessNumberModel = GuessNumberModel(range: range, playerOneNumber: playerOneEnteredNumber, playerTwoNumber: playerTwoEnteredNumber)
     }
     
-    func makeChoice(number: Int) -> GuessNumberModel.GuessNumberOut? {
+    func makeChoice(number: Int) -> GuessNumberOut? {
         previousInput = "\(number)"
         return guessNumberModel?.checkEnteredNumber(enteredNumber: number)
     }
@@ -56,21 +54,17 @@ class ViewModel: ObservableObject {
     }
     
     func startComputerTurn() {
-        print("1")
         guard guessNumberModel != nil else { return }
-        print("2")
         if !guessNumberModel!.isPlayerOneTurn {
-            print("3")
             Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { timer in
-                print("4")
                 self.computerPlayerModel.guessNumber { number in
-                    print("5")
                     let result = self.guessNumberModel!.checkEnteredNumber(enteredNumber: number)
                     self.previousInput = "\(number)"
                     print("Computer turn: \(number)")
                     if result == .equal {
                         timer.invalidate()
                         self.currentView = .result
+                        return result
                     }
                     return result
                 }

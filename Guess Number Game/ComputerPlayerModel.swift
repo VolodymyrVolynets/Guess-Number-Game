@@ -7,33 +7,33 @@
 
 import Foundation
 
-struct ComputerPlayerModel {
-    private let range: Range<Int>
-    private var guessNumberRange: Range<Int>
-    init(range: Range<Int>) {
+struct ComputerPlayerModel<Element> where Element: BinaryInteger, Element.Stride: SignedInteger {
+    private let range: ClosedRange<Element>
+    private var guessNumberRange: ClosedRange<Element>
+    init(range: ClosedRange<Element>) {
         self.range = range
         self.guessNumberRange = range
     }
     
-    func createNumber() -> Int {
-        let randomNum = range.randomElement() ?? 0
+    func createNumber() -> Element {
+        let randomNum = range.randomElement()
         
         print("computer variable: \(randomNum)")
         
-        return randomNum
+        return randomNum ?? 0
     }
     
-    mutating func guessNumber(closure: (Int) -> GuessNumberModel.GuessNumberOut) {
+    mutating func guessNumber(closure: (Element) -> GuessNumberOut) {
         guard let randomNumber = guessNumberRange.randomElement() else { return }
         
         let result = closure(randomNumber)
         
             if result == .greater {
             guard let safeCurrentRangeMax = guessNumberRange.max() else { return }
-            guessNumberRange = randomNumber + 1..<safeCurrentRangeMax + 1
+                guessNumberRange = randomNumber + 1...safeCurrentRangeMax
         } else {
             guard let safeCurrentRangeMin = guessNumberRange.min() else { return }
-            guessNumberRange = safeCurrentRangeMin..<randomNumber
+            guessNumberRange = safeCurrentRangeMin...randomNumber - 1
         }
     }
 }

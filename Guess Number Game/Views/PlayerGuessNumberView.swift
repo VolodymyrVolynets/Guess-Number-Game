@@ -12,9 +12,9 @@ struct PlayerGuessNumberView: View {
     @ObservedObject var viewModel: ViewModel
     @State var textField = ""
     
-    @State var result: GuessNumberModel.GuessNumberOut?
+    @State var result: GuessNumberOut?
     
-    var range: Range<Int> {
+    var range: ClosedRange<Int> {
         viewModel.range
     }
     
@@ -65,6 +65,6 @@ struct PlayerGuessNumberView: View {
 
 struct PlayerGuessNumberView_Previews: PreviewProvider {
     static var previews: some View {
-        PlayerGuessNumberView(viewModel: ViewModel(range: -100..<100))
+        PlayerGuessNumberView(viewModel: ViewModel(range: -100...100))
     }
 }
