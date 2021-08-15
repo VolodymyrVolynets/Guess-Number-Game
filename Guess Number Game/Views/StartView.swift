@@ -11,20 +11,22 @@ struct StartView: View {
     
     @ObservedObject var viewModel: ViewModel
     @State var scaleEffect: CGFloat = 1
+    var screenSize = UIScreen.main.bounds.size
 
     var body: some View {
         ZStack {
-            Color.white
-                .edgesIgnoringSafeArea(.all)
             VStack {
                 Text("Press To Start New Game")
+
                     .font(.system(size: 40, weight: .bold, design: .default))
                     .lineLimit(1)
                     .minimumScaleFactor(0.1)
                     .padding(40)
                     .scaleEffect(scaleEffect)
+                    .foregroundColor(Color("fontColor"))
             }
         }
+        .frame(width: screenSize.width, height: screenSize.height)
         .onAppear {
             withAnimation(Animation.easeInOut(duration: 1).repeatForever(autoreverses: true)) {
                 scaleEffect = 0.8

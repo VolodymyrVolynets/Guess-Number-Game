@@ -16,7 +16,7 @@ class ViewModel: ObservableObject {
         }
     }
     var computerPlayerModel: ComputerPlayerModel<SignedIntegerElement>
-    let range: ClosedRange<Int>
+    let range: ClosedRange<SignedIntegerElement>
     var previousInput = ""
     var isGameStarted: Bool {
         return guessNumberModel != nil ? true : false
@@ -31,19 +31,20 @@ class ViewModel: ObservableObject {
         guessNumberModel?.playerTwoFails ?? 0
     }
     
-    init(range: ClosedRange<Int>) {
+    init(range: ClosedRange<SignedIntegerElement>) {
         self.range = range
         self.computerPlayerModel = ComputerPlayerModel(range: range)
     }
     
-    func startNewGame(playerOneEnteredNumber: Int) {
+    func startNewGame(playerOneEnteredNumber: SignedIntegerElement) {
         let playerOneEnteredNumber = playerOneEnteredNumber
         let playerTwoEnteredNumber = computerPlayerModel.createNumber()
         print(playerTwoEnteredNumber)
+        self.currentView = .startView
         self.guessNumberModel = GuessNumberModel(range: range, playerOneNumber: playerOneEnteredNumber, playerTwoNumber: playerTwoEnteredNumber)
     }
     
-    func makeChoice(number: Int) -> GuessNumberOut? {
+    func makeChoice(number: SignedIntegerElement) -> GuessNumberOut? {
         previousInput = "\(number)"
         return guessNumberModel?.checkEnteredNumber(enteredNumber: number)
     }
