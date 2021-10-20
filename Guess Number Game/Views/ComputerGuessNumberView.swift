@@ -1,13 +1,13 @@
 //
-//  PlayerGuessNumberView.swift
+//  ComputerGuessNumberView.swift
 //  Guess Number Game
 //
-//  Created by Vova on 31.07.2021.
+//  Created by Vova on 02.10.2021.
 //
 
 import SwiftUI
 
-struct PlayerGuessNumberView: View {
+struct ComputerGuessNumberView: View {
     
     @EnvironmentObject var viewModel: ViewModel
     @State var textField = ""
@@ -24,45 +24,45 @@ struct PlayerGuessNumberView: View {
         viewModel.isValidIntString(string: textField)
     }
     
+    @State var wasPressed = false
+    
     
     var body: some View {
         ZStack {
             VStack {
-                Text("Please guess hidden number")
+                Text("Computer guess hidden number")
                     .font(.system(size: 40, weight: .bold))
                     .lineLimit(2)
                     .minimumScaleFactor(0.1)
                     .multilineTextAlignment(.center)
                 
-                Text("Enter number between \(range.min()!) and \(range.max()!)")
-                    .font(.system(size: 20, weight: .light))
+                Text("\(textField)")
+                    .font(.system(size: CGFloat(screenSize.width / 3), weight: .bold))
                     .lineLimit(2)
                     .minimumScaleFactor(0.1)
-                    .multilineTextAlignment(.center)
-                
-                TextField("Enter Number", text: $textField)
-                    .font(.system(size: CGFloat(screenSize.width / 10), weight: .bold))
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.5)
                     .multilineTextAlignment(.center)
                     .onChange(of: textField) { _ in textField = viewModel.validateString(string: textField) }
                 
                 Spacer()
                 
-                Button {
-                    viewModel.makeChoice(number: Int(textField)!)
-                } label: {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 15)
-                            .frame(width: 170, height: 57)
-                            .foregroundColor(isValidNumber ? .accentColor : .gray)
-                        Text("Guess")
-                            .foregroundColor(.white)
-                            .font(.system(size: 40, weight: .bold))
+                if !wasPressed {
+                    Button {
+                        viewModel.startComputerTurn { num in
+                            textField = "\(num)"
+                        }
+                        wasPressed = true
+                    } label: {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 15)
+                                .frame(width: 170, height: 57)
+                                .foregroundColor(.accentColor)
+                            Text("Start")
+                                .foregroundColor(.white)
+                                .font(.system(size: 40, weight: .bold))
+                        }
+                        .padding(.vertical, 10)
                     }
-                    .padding(.vertical, 10)
                 }
-                .disabled(!isValidNumber || viewModel.alert.isShow)
                 
                 
             }
@@ -97,9 +97,8 @@ struct PlayerGuessNumberView: View {
     }
 }
 
-struct PlayerGuessNumberView_Previews: PreviewProvider {
+struct ComputerGuessNumberView_Previews: PreviewProvider {
     static var previews: some View {
-        PlayerGuessNumberView()
-            .environmentObject(ViewModel(range: 0...100))
+        ComputerGuessNumberView()
     }
 }

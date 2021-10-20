@@ -9,30 +9,38 @@ import SwiftUI
 
 struct StartView: View {
     
-    @ObservedObject var viewModel: ViewModel
+    @EnvironmentObject var viewModel: ViewModel
     @State var scaleEffect: CGFloat = 1
     var screenSize = UIScreen.main.bounds.size
-
+    
     var body: some View {
-        ZStack {
-            VStack {
-                Text("Press To Start New Game")
-
-                    .font(.system(size: 40, weight: .bold, design: .default))
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.1)
-                    .padding(40)
-                    .scaleEffect(scaleEffect)
-                    .foregroundColor(Color("fontColor"))
-            }
+        VStack {
+            // Spacers are used to extend the whole VStack
+            Spacer()
+            
+            Text("Press To Start New Game")
+                .font(UIConstants.fontStyle)
+                .lineLimit(2)
+                .minimumScaleFactor(0.1)
+                .multilineTextAlignment(.center)
+                .padding(40)
+                .scaleEffect(scaleEffect)
+                .foregroundColor(Color.black)
+                .shadow(color: .black, radius: 10, x: 0, y: 5)
+            
+            Spacer()
         }
-        .frame(width: screenSize.width, height: screenSize.height)
+        .edgesIgnoringSafeArea(.all)
+        // to make whole VStack tappable
+        .contentShape(Rectangle())
         .onAppear {
             withAnimation(Animation.easeInOut(duration: 1).repeatForever(autoreverses: true)) {
                 scaleEffect = 0.8
             }
         }
+        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         .onTapGesture {
+            // On Tap switch View
             withAnimation() {
                 viewModel.currentView = .playerEnterNumberView
             }
@@ -42,6 +50,7 @@ struct StartView: View {
 
 struct StartView_Previews: PreviewProvider {
     static var previews: some View {
-        StartView(viewModel: ViewModel(range: -100...100))
+        StartView()
+            .environmentObject(ViewModel(range: 0...100))
     }
 }

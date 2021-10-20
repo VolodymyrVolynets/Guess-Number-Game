@@ -8,15 +8,9 @@
 import Foundation
 
 extension String {
-   var isEmptyOrNumeric: Bool {
-//     return !(self.isEmpty) && self.allSatisfy { $0.isNumber }
-    return self == "" || self.allSatisfyEnumerated(closure: { index, item in
-        if index == 0 {
-            return item == "-" || item.isNumber
-        } else {
-            return item.isNumber
-        }
-    })
+   var isNumericAndNotEmpty: Bool {
+       guard self.isEmpty else { return false }
+       return self.allSatisfy { $0.isNumber }
    }
     
     func allSatisfyEnumerated(closure: (Int, Self.Element) -> Bool) -> Bool {
@@ -27,5 +21,21 @@ extension String {
         }
         
         return true
+    }
+    
+    mutating func validateStringByPattern(pattern: String) {
+        let result = self.range(
+            of: pattern,
+            options: .regularExpression
+        )
+        
+        guard let result = result else {
+            // if can`t find patern in string, make string empty
+            self = ""
+            return
+        }
+        
+        // change wrappedValue
+        self = String(self[result])
     }
 }

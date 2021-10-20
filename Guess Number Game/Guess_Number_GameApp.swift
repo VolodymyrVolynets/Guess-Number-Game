@@ -12,6 +12,7 @@ struct Guess_Number_GameApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .preferredColorScheme(.light)
         }
     }
 }

@@ -18,8 +18,6 @@ struct ComputerPlayerModel<Element> where Element: BinaryInteger, Element.Stride
     func createNumber() -> Element {
         let randomNum = range.randomElement()
         
-        print("computer variable: \(randomNum)")
-        
         return randomNum ?? 0
     }
     
@@ -28,10 +26,10 @@ struct ComputerPlayerModel<Element> where Element: BinaryInteger, Element.Stride
         
         let result = closure(randomNumber)
         
-            if result == .greater {
+        if result == .greater {
             guard let safeCurrentRangeMax = guessNumberRange.max() else { return }
-                guessNumberRange = randomNumber + 1...safeCurrentRangeMax
-        } else {
+            guessNumberRange = randomNumber + 1...safeCurrentRangeMax
+        } else if result == .less {
             guard let safeCurrentRangeMin = guessNumberRange.min() else { return }
             guessNumberRange = safeCurrentRangeMin...randomNumber - 1
         }

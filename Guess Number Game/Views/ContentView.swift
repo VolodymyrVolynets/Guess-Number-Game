@@ -9,33 +9,32 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @ObservedObject var viewModel = ViewModel(range: -100...100)
+    @ObservedObject var viewModel = ViewModel(range: 0...100)
+    var currentView: ViewModel.CurrentView { viewModel.currentView
+    }
     
     var body: some View {
-        ZStack {
-            LinearGradient(gradient: Gradient(colors: [Color("backGroundGradient1Color"), Color("backGroundGradient2Color")]), startPoint: .topLeading, endPoint: .bottomTrailing)
-                .edgesIgnoringSafeArea(.all)
-            
-            switch viewModel.currentView {
+        Group {
+            switch currentView {
             case .startView:
-                StartView(viewModel: viewModel)
-                    .transition(AnyTransition.asymmetric(insertion: .opacity, removal: .move(edge: .top)))
+                StartView()
             case .playerEnterNumberView:
-                PlayerEnterNumberView(viewModel: viewModel)
+                PlayerEnterNumberView()
             case .playerGuessNumberView:
-                PlayerGuessNumberView(viewModel: viewModel)
+                PlayerGuessNumberView()
+            case .computerGuessNumberView:
+                ComputerGuessNumberView()
             case .result:
-                VStack {
-                    Text("Player one fails: \(viewModel.playerOneFails)")
-                    Text("Player two fails: \(viewModel.playerTwoFails)")
-                }
+                ResultView()
             }
         }
+        .environmentObject(viewModel)
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environment(\.locale, .init(identifier: "en"))
     }
 }

@@ -28,15 +28,10 @@ struct GuessNumberModel<Element> where Element: BinaryInteger {
         
         if numberToCompare == enteredNumber {
             guessNumberOut = .equal
-            if isPlayerOneTurn {
-                changeTurn()
-            } else {
-//                isEndGame = true
-            }
+            changeTurn()
             
         } else {
             addFailScore()
-            
             
             guessNumberOut = numberToCompare > enteredNumber ? .greater : .less
         }

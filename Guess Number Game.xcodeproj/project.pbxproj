@@ -3,11 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		802E7B8426BD53A100BBAFDF /* BindingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802E7B8326BD53A100BBAFDF /* BindingExtension.swift */; };
+		8031BC13270A389E00243944 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8031BC12270A389E00243944 /* ResultView.swift */; };
+		803FCD772708DC0900A7CC57 /* ComputerGuessNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803FCD762708DC0900A7CC57 /* ComputerGuessNumberView.swift */; };
+		80487BEE271F1AD0008FF619 /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 80487BED271F1AD0008FF619 /* ConfettiSwiftUI */; settings = {ATTRIBUTES = (Required, ); }; };
+		80487BEF271F1AD0008FF619 /* ConfettiSwiftUI in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 80487BED271F1AD0008FF619 /* ConfettiSwiftUI */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		8071F78C26B3D57A00478F0B /* Guess_Number_GameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8071F78B26B3D57A00478F0B /* Guess_Number_GameApp.swift */; };
 		8071F78E26B3D57A00478F0B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8071F78D26B3D57A00478F0B /* ContentView.swift */; };
 		8071F79026B3D57B00478F0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8071F78F26B3D57B00478F0B /* Assets.xcassets */; };
@@ -16,6 +20,7 @@
 		8071F79E26B3D62000478F0B /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8071F79D26B3D62000478F0B /* ViewModel.swift */; };
 		8071F7A026B3EE3200478F0B /* ComputerPlayerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8071F79F26B3EE3200478F0B /* ComputerPlayerModel.swift */; };
 		8071F7A426B56D2600478F0B /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8071F7A326B56D2600478F0B /* StartView.swift */; };
+		80753BEF26F200BC008000EB /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80753BEE26F200BC008000EB /* UIConstants.swift */; };
 		80955B1E26B5879900608454 /* PlayerEnterNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80955B1D26B5879900608454 /* PlayerEnterNumberView.swift */; };
 		80955B2026B5886D00608454 /* PlayerGuessNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80955B1F26B5886D00608454 /* PlayerGuessNumberView.swift */; };
 		80955B2326B6943A00608454 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80955B2226B6943A00608454 /* ViewExtension.swift */; };
@@ -23,8 +28,24 @@
 		80E0AF5726BC32DD006A166C /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E0AF5626BC32DD006A166C /* StringExtension.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		80487BE7271F19A5008FF619 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				80487BEF271F1AD0008FF619 /* ConfettiSwiftUI in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		802E7B8326BD53A100BBAFDF /* BindingExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingExtension.swift; sourceTree = "<group>"; };
+		8031BC12270A389E00243944 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
+		803FCD762708DC0900A7CC57 /* ComputerGuessNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputerGuessNumberView.swift; sourceTree = "<group>"; };
 		8071F78826B3D57A00478F0B /* Guess Number Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Guess Number Game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8071F78B26B3D57A00478F0B /* Guess_Number_GameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guess_Number_GameApp.swift; sourceTree = "<group>"; };
 		8071F78D26B3D57A00478F0B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -35,6 +56,7 @@
 		8071F79D26B3D62000478F0B /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		8071F79F26B3EE3200478F0B /* ComputerPlayerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputerPlayerModel.swift; sourceTree = "<group>"; };
 		8071F7A326B56D2600478F0B /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
+		80753BEE26F200BC008000EB /* UIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConstants.swift; sourceTree = "<group>"; };
 		80955B1D26B5879900608454 /* PlayerEnterNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerEnterNumberView.swift; sourceTree = "<group>"; };
 		80955B1F26B5886D00608454 /* PlayerGuessNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerGuessNumberView.swift; sourceTree = "<group>"; };
 		80955B2226B6943A00608454 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
@@ -47,17 +69,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80487BEE271F1AD0008FF619 /* ConfettiSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7613FAC6EF0284FE8A7FF5E5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8071F77F26B3D57A00478F0B = {
 			isa = PBXGroup;
 			children = (
 				8071F78A26B3D57A00478F0B /* Guess Number Game */,
 				8071F78926B3D57A00478F0B /* Products */,
+				7613FAC6EF0284FE8A7FF5E5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,8 +105,8 @@
 			children = (
 				8071F79A26B3D5DE00478F0B /* Views */,
 				80955B2126B6942900608454 /* Extensions */,
-				8071F78B26B3D57A00478F0B /* Guess_Number_GameApp.swift */,
 				8071F79B26B3D5F900478F0B /* GuessNumberModel.swift */,
+				8071F78B26B3D57A00478F0B /* Guess_Number_GameApp.swift */,
 				8071F79F26B3EE3200478F0B /* ComputerPlayerModel.swift */,
 				8071F79D26B3D62000478F0B /* ViewModel.swift */,
 				80955B2426B90C2500608454 /* GameError.swift */,
@@ -99,8 +130,11 @@
 			children = (
 				8071F78D26B3D57A00478F0B /* ContentView.swift */,
 				8071F7A326B56D2600478F0B /* StartView.swift */,
+				80753BEE26F200BC008000EB /* UIConstants.swift */,
 				80955B1D26B5879900608454 /* PlayerEnterNumberView.swift */,
 				80955B1F26B5886D00608454 /* PlayerGuessNumberView.swift */,
+				803FCD762708DC0900A7CC57 /* ComputerGuessNumberView.swift */,
+				8031BC12270A389E00243944 /* ResultView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -125,12 +159,17 @@
 				8071F78426B3D57A00478F0B /* Sources */,
 				8071F78526B3D57A00478F0B /* Frameworks */,
 				8071F78626B3D57A00478F0B /* Resources */,
+				80487BE7271F19A5008FF619 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				80487BEC271F1AAD008FF619 /* PBXTargetDependency */,
 			);
 			name = "Guess Number Game";
+			packageProductDependencies = (
+				80487BED271F1AD0008FF619 /* ConfettiSwiftUI */,
+			);
 			productName = "Guess Number Game";
 			productReference = 8071F78826B3D57A00478F0B /* Guess Number Game.app */;
 			productType = "com.apple.product-type.application";
@@ -156,8 +195,12 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 8071F77F26B3D57A00478F0B;
+			packageReferences = (
+				80487BE8271F1A27008FF619 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */,
+			);
 			productRefGroup = 8071F78926B3D57A00478F0B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -189,17 +232,27 @@
 				80955B2026B5886D00608454 /* PlayerGuessNumberView.swift in Sources */,
 				8071F79E26B3D62000478F0B /* ViewModel.swift in Sources */,
 				80955B2326B6943A00608454 /* ViewExtension.swift in Sources */,
+				80753BEF26F200BC008000EB /* UIConstants.swift in Sources */,
 				80955B2526B90C2500608454 /* GameError.swift in Sources */,
 				8071F78E26B3D57A00478F0B /* ContentView.swift in Sources */,
 				8071F78C26B3D57A00478F0B /* Guess_Number_GameApp.swift in Sources */,
 				80955B1E26B5879900608454 /* PlayerEnterNumberView.swift in Sources */,
 				802E7B8426BD53A100BBAFDF /* BindingExtension.swift in Sources */,
 				80E0AF5726BC32DD006A166C /* StringExtension.swift in Sources */,
+				803FCD772708DC0900A7CC57 /* ComputerGuessNumberView.swift in Sources */,
 				8071F7A426B56D2600478F0B /* StartView.swift in Sources */,
+				8031BC13270A389E00243944 /* ResultView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		80487BEC271F1AAD008FF619 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 80487BEB271F1AAD008FF619 /* ConfettiSwiftUI */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		8071F79526B3D57B00478F0B /* Debug */ = {
@@ -253,7 +306,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -308,7 +361,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -336,7 +389,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Volodymyr.Guess-Number-Game";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -358,7 +411,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Volodymyr.Guess-Number-Game";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -384,6 +437,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		80487BE8271F1A27008FF619 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/simibac/ConfettiSwiftUI";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		80487BEB271F1AAD008FF619 /* ConfettiSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 80487BE8271F1A27008FF619 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */;
+			productName = ConfettiSwiftUI;
+		};
+		80487BED271F1AD0008FF619 /* ConfettiSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 80487BE8271F1A27008FF619 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */;
+			productName = ConfettiSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8071F78026B3D57A00478F0B /* Project object */;
 }
