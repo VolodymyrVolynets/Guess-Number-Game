@@ -9,7 +9,7 @@ A game designed to understand the process of publishing applications in the appl
 A simple game whose main task is to come up with a number in the range from 0 to 100, after which you need to guess the number that the computer came up with and whoever guesses faster wins
 ## Step 1:
 Think of a number from 0 to 100
-![IMG_0012](https://user-images.githubusercontent.com/81035911/193666058-3ff7f2d5-0fb9-4676-b64a-2f72c8f4898e.PNG)
+<img src="https://user-images.githubusercontent.com/81035911/193666058-3ff7f2d5-0fb9-4676-b64a-2f72c8f4898e.PNG" width="auto" height="350">
 
 
 ## Step 2:
